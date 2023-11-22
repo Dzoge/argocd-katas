@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
       app: frontend
--Invalid-Entry-To-Test-Manifest-Errors
   strategy: {}
   template:
     metadata:
