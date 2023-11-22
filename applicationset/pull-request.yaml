@@ -1,24 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: pr-<NUMBER>
+  name: pr-7
   namespace: argocd
 spec:
   generators:
   - pullRequest:
       github:
-        # The GitHub organization or user.
-        owner: <YOUR GITHUB USERNAME> #e.g. eficode-academy
-        # The Github repository
-        repo: <YOUR GIT REPO> #e.g. argocd-katas
-
-        # Labels is used to filter the PRs that you want to target. (optional)
+        owner: Dzoge
+        repo: argocd-katas
         labels:
         - test
       requeueAfterSeconds: 180
   template:
     metadata:
-      name: 'todo-<NUMBER>-{{branch}}-{{number}}'
+      name: 'todo-7-{{branch}}-{{number}}'
     spec:
       project: "default"
       source:
@@ -39,7 +35,7 @@ spec:
             value: "todo-{{head_short_sha}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: <YOUR NAMESPACE>
+        namespace: student-7
       syncPolicy:
         automated:
           prune: true
